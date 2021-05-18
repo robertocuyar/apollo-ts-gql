@@ -10,6 +10,7 @@ const app = express();
 const server = new ApolloServer({
     schema,
     validationRules: [depthLimit(7)],
+    playground: true,
 });
 
 app.use(cors());
@@ -19,5 +20,5 @@ server.applyMiddleware({app, path:  '/graphql' });
 const httpServer = createServer(app);
 
 httpServer.listen(
-    { port: 3000},
+    { port: 3000 },
     () : void => console.log(`\n GraphQL is now running on http://localhost:3000/graphql`));
